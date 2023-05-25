@@ -1,5 +1,6 @@
 import socket
 import threading
+from time import sleep
 
 def receive_messages(sock):
     while True:
@@ -10,6 +11,7 @@ def send_message(sock, host, send_ports):
     while True:
         message = input('Enter message: ')
         for port in send_ports:
+            sleep(1)
             sock.sendto(message.encode('utf-8'), (host, port))
 
 def main():
