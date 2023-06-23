@@ -1,19 +1,13 @@
 import subprocess
 
 def main():
-    # Comandos a serem executados
-    commands = [
-        'python node_1.py',
-        'python node_2.py',
-        'python node_3.py',
-        'python node_4.py',
-        'python node_5.py',
-        'python node_6.py'
-    ]
+    # Portas de entrada
+    portas = range(8001, 8007)
 
-    # Abrir terminal e executar cada comando
-    for command in commands:
-        subprocess.Popen(['start', 'cmd', '/K', command], shell=True)
+    # Abrir terminal e executar nodes.py em cada porta
+    for porta in portas:
+        command = f'start cmd /K python nodes.py {porta}'
+        subprocess.Popen(command, shell=True)
 
 if __name__ == '__main__':
     main()
